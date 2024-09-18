@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   });
   const [newTodo, setNewTodo] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [filter, setFilter] = useState("all") ; 
+  const [filter, setFilter] = useState("all") ;
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -43,8 +43,8 @@ function App() {
 
   return (
     <div className="container">
-      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-slate-800 md:text-5xl lg:text-6xl">Mi lista ToDo</h1>
-      <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-600">Tareas pendientes: {pendingTodos}</p>
+      <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-slate-800 md:text-5xl lg:text-6xl">Mi lista ToDo</h1>
+      <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-600">Tareas pendientes: {pendingTodos}</p>
       <input
         type="text"
         value={newTodo}
@@ -56,13 +56,13 @@ function App() {
         value={dueDate}
         onChange={(e) => setDueDate(e.target.value)}
       />
-      <button className='addButton' onClick={handleAddTodo}> <p class="font-bold">Agregar</p> </button>
+      <button className='addButton' onClick={handleAddTodo}> <p className="font-bold">Agregar</p> </button>
       <div className="filter-buttons">
         <button onClick={() => setFilter("all")}>Todas</button>
         <button onClick={() => setFilter("completed")}>Completadas</button>
         <button onClick={() => setFilter("pending")}>Pendientes</button>
       </div>
-      <ul>  
+      <ul>
         {filteredTodos.map((todo, index) => (
           <li key={index} className={todo.completed ? "completado" : ""}>
             {todo.text} : {todo.dueDate}
